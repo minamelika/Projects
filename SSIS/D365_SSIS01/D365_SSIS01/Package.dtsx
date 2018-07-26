@@ -1,0 +1,1198 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="11/16/2017 1:06:38 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="BSD-MF-LT"
+  DTS:CreatorName="SYSCOMUSA\m-farag"
+  DTS:DTSID="{EA58C1D4-A38C-4F99-9B49-BB6D1EE745BF}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.0800.60"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="1"
+  DTS:VersionGUID="{5878DC42-D25C-45D6-99AD-AF9C8D399D81}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[BSD-MF-LT\MINADEV.D365]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{D51648FC-C3DA-4A8B-AE17-8BD0AA53F4E1}"
+      DTS:ObjectName="BSD-MF-LT\MINADEV.D365">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=BSD-MF-LT\MINADEV;Initial Catalog=D365;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[BSD-MF-LT\MINADEV.D365.sa]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{FAFD3A58-0D8B-4C7B-8769-ECE9EAF6F695}"
+      DTS:ObjectName="BSD-MF-LT\MINADEV.D365.sa">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=BSD-MF-LT\MINADEV;User ID=sa;Initial Catalog=D365;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAssIHV+uZ/0OLlerFQfusfAAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAAJVGrRMSFwGGSvaZ+Aiz/PAAAAAASAAACgAAAAEAAAAEBVS1jv2tCxyIfARdlypWoIAAAAmLbBEnnhHYQUAAAAa4YwGtANG2YcpAvdArKt0dDRQIs</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[OData Source]"
+      DTS:CreationName="ODATA"
+      DTS:DTSID="{0A10E3E6-7B78-4AFF-B063-B2D154DBFCE6}"
+      DTS:ObjectName="OData Source">
+      <DTS:ObjectData>
+        <ODataConnectionManager
+          UserName="m-farag"
+          Url="https://syscombsdny.financials.dynamics.com:7048/MS/ODataV4/"
+          ConnectionString="Service Document Url=https://syscombsdny.financials.dynamics.com:7048/MS/ODataV4/;Include Atom Elements=Auto;Include Expanded Entities=False;Integrated Security=False;User ID=m-farag;Persist Security Info=False;Time Out=600;Schema Sample Size=25;Retry Count=5;Retry Sleep=100;Keep Alive=False;Max Received Message Size=4398046511104"
+          MicrosoftOnlineServicesAuth="False"
+          AuthType="BasicAuthentication">
+          <Password
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAssIHV+uZ/0OLlerFQfusfAAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACYlp/csdgsMX324+sp1/gyAAAAAASAAACgAAAAEAAAAHZUqvauaSX5Gmn1APw9boNgAAAAipja3xLgv7/NKFJBoAjXr92PvGbPraZO19RKarZ4UAipHN+tnKFlH3Rl9iUFtUP5ssjbAt05//yxBMFcswt06OOgNuAZSMYMuX1NvUTb8aU65ruXbV493y78TxrH4QhAFAAAAPCRKy4KgT85op7aTNJ84oML6HwR</Password>
+        </ODataConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{34052B3A-81AF-4EA8-941B-298E201A302D}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task\OData Source"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="OData Source Component;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Read data from OData services"
+              name="OData Source"
+              usesDispositions="true">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Name of the collection to be retrieved from the service."
+                  expressionType="Notify"
+                  name="CollectionName"></property>
+                <property
+                  dataType="System.Int32"
+                  description="The default maximum length for a string that has no maxlength specified in the schema."
+                  name="DefaultStringLength">4000</property>
+                <property
+                  dataType="System.String"
+                  description="Query in the url. "
+                  expressionType="Notify"
+                  name="Query"></property>
+                <property
+                  dataType="System.String"
+                  description="Resource path of the collection to be retrieved from the service."
+                  expressionType="Notify"
+                  name="ResourcePath">Company('BSDTest')/ItemSalesAndProfit</property>
+                <property
+                  dataType="System.Boolean"
+                  description="When set to true, use the resource path as requested collection; otherwise, use the collection name."
+                  expressionType="Notify"
+                  name="UseResourcePath">true</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.OData</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\OData Source.Connections[Connection]"
+                  connectionManagerID="Package.ConnectionManagers[OData Source]"
+                  connectionManagerRefId="Package.ConnectionManagers[OData Source]"
+                  description="Connection to OData Service"
+                  name="Connection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\OData Source.Outputs[Output]"
+                  name="Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[No]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source.Outputs[Output].ExternalColumns[No]"
+                      length="20"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[No]"
+                      name="No"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[Description]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source.Outputs[Output].ExternalColumns[Description]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[Description]"
+                      name="Description"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[Gen_Prod_Posting_Group]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source.Outputs[Output].ExternalColumns[Gen_Prod_Posting_Group]"
+                      length="20"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[Gen_Prod_Posting_Group]"
+                      name="Gen_Prod_Posting_Group"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[Item_Disc_Group]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source.Outputs[Output].ExternalColumns[Item_Disc_Group]"
+                      length="20"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[Item_Disc_Group]"
+                      name="Item_Disc_Group"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[Item_Tracking_Code]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source.Outputs[Output].ExternalColumns[Item_Tracking_Code]"
+                      length="10"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[Item_Tracking_Code]"
+                      name="Item_Tracking_Code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[Profit]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source.Outputs[Output].ExternalColumns[Profit]"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[Profit]"
+                      name="Profit"
+                      precision="38"
+                      scale="4"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[Scrap]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source.Outputs[Output].ExternalColumns[Scrap]"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[Scrap]"
+                      name="Scrap"
+                      precision="38"
+                      scale="4"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[Sales_Unit_of_Measure]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source.Outputs[Output].ExternalColumns[Sales_Unit_of_Measure]"
+                      length="10"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[Sales_Unit_of_Measure]"
+                      name="Sales_Unit_of_Measure"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[Standard_Cost]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source.Outputs[Output].ExternalColumns[Standard_Cost]"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[Standard_Cost]"
+                      name="Standard_Cost"
+                      precision="38"
+                      scale="4"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[Unit_Cost]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source.Outputs[Output].ExternalColumns[Unit_Cost]"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[Unit_Cost]"
+                      name="Unit_Cost"
+                      precision="38"
+                      scale="4"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[Unit_Price]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source.Outputs[Output].ExternalColumns[Unit_Price]"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[Unit_Price]"
+                      name="Unit_Price"
+                      precision="38"
+                      scale="4"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[Unit_Volume]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source.Outputs[Output].ExternalColumns[Unit_Volume]"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[Unit_Volume]"
+                      name="Unit_Volume"
+                      precision="38"
+                      scale="4"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[Vendor_No]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source.Outputs[Output].ExternalColumns[Vendor_No]"
+                      length="20"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[Vendor_No]"
+                      name="Vendor_No"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[Purch_Unit_of_Measure]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source.Outputs[Output].ExternalColumns[Purch_Unit_of_Measure]"
+                      length="10"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[Purch_Unit_of_Measure]"
+                      name="Purch_Unit_of_Measure"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[COGS_LCY]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source.Outputs[Output].ExternalColumns[COGS_LCY]"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[COGS_LCY]"
+                      name="COGS_LCY"
+                      precision="38"
+                      scale="4"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[Inventory]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source.Outputs[Output].ExternalColumns[Inventory]"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[Inventory]"
+                      name="Inventory"
+                      precision="38"
+                      scale="4"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[Net_Change]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source.Outputs[Output].ExternalColumns[Net_Change]"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[Net_Change]"
+                      name="Net_Change"
+                      precision="38"
+                      scale="4"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[Net_Invoiced_Qty]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source.Outputs[Output].ExternalColumns[Net_Invoiced_Qty]"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[Net_Invoiced_Qty]"
+                      name="Net_Invoiced_Qty"
+                      precision="38"
+                      scale="4"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[Purchases_LCY]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source.Outputs[Output].ExternalColumns[Purchases_LCY]"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[Purchases_LCY]"
+                      name="Purchases_LCY"
+                      precision="38"
+                      scale="4"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[Purchases_Qty]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source.Outputs[Output].ExternalColumns[Purchases_Qty]"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[Purchases_Qty]"
+                      name="Purchases_Qty"
+                      precision="38"
+                      scale="4"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[Sales_LCY]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source.Outputs[Output].ExternalColumns[Sales_LCY]"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[Sales_LCY]"
+                      name="Sales_LCY"
+                      precision="38"
+                      scale="4"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[Sales_Qty]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source.Outputs[Output].ExternalColumns[Sales_Qty]"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[Sales_Qty]"
+                      name="Sales_Qty"
+                      precision="38"
+                      scale="4"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[VendorName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source.Outputs[Output].ExternalColumns[VendorName]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[VendorName]"
+                      name="VendorName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[AuxiliaryIndex1]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OData Source.Outputs[Output].ExternalColumns[AuxiliaryIndex1]"
+                      length="20"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[AuxiliaryIndex1]"
+                      name="AuxiliaryIndex1"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Output].ExternalColumns[No]"
+                      dataType="wstr"
+                      length="20"
+                      name="No" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Output].ExternalColumns[Description]"
+                      dataType="wstr"
+                      length="50"
+                      name="Description" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Output].ExternalColumns[Gen_Prod_Posting_Group]"
+                      dataType="wstr"
+                      length="20"
+                      name="Gen_Prod_Posting_Group" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Output].ExternalColumns[Item_Disc_Group]"
+                      dataType="wstr"
+                      length="20"
+                      name="Item_Disc_Group" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Output].ExternalColumns[Item_Tracking_Code]"
+                      dataType="wstr"
+                      length="10"
+                      name="Item_Tracking_Code" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Output].ExternalColumns[Profit]"
+                      dataType="numeric"
+                      name="Profit"
+                      precision="38"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Output].ExternalColumns[Scrap]"
+                      dataType="numeric"
+                      name="Scrap"
+                      precision="38"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Output].ExternalColumns[Sales_Unit_of_Measure]"
+                      dataType="wstr"
+                      length="10"
+                      name="Sales_Unit_of_Measure" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Output].ExternalColumns[Standard_Cost]"
+                      dataType="numeric"
+                      name="Standard_Cost"
+                      precision="38"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Output].ExternalColumns[Unit_Cost]"
+                      dataType="numeric"
+                      name="Unit_Cost"
+                      precision="38"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Output].ExternalColumns[Unit_Price]"
+                      dataType="numeric"
+                      name="Unit_Price"
+                      precision="38"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Output].ExternalColumns[Unit_Volume]"
+                      dataType="numeric"
+                      name="Unit_Volume"
+                      precision="38"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Output].ExternalColumns[Vendor_No]"
+                      dataType="wstr"
+                      length="20"
+                      name="Vendor_No" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Output].ExternalColumns[Purch_Unit_of_Measure]"
+                      dataType="wstr"
+                      length="10"
+                      name="Purch_Unit_of_Measure" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Output].ExternalColumns[COGS_LCY]"
+                      dataType="numeric"
+                      name="COGS_LCY"
+                      precision="38"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Output].ExternalColumns[Inventory]"
+                      dataType="numeric"
+                      name="Inventory"
+                      precision="38"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Output].ExternalColumns[Net_Change]"
+                      dataType="numeric"
+                      name="Net_Change"
+                      precision="38"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Output].ExternalColumns[Net_Invoiced_Qty]"
+                      dataType="numeric"
+                      name="Net_Invoiced_Qty"
+                      precision="38"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Output].ExternalColumns[Purchases_LCY]"
+                      dataType="numeric"
+                      name="Purchases_LCY"
+                      precision="38"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Output].ExternalColumns[Purchases_Qty]"
+                      dataType="numeric"
+                      name="Purchases_Qty"
+                      precision="38"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Output].ExternalColumns[Sales_LCY]"
+                      dataType="numeric"
+                      name="Sales_LCY"
+                      precision="38"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Output].ExternalColumns[Sales_Qty]"
+                      dataType="numeric"
+                      name="Sales_Qty"
+                      precision="38"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Output].ExternalColumns[VendorName]"
+                      dataType="wstr"
+                      length="50"
+                      name="VendorName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Output].ExternalColumns[AuxiliaryIndex1]"
+                      dataType="wstr"
+                      length="20"
+                      name="AuxiliaryIndex1" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\OData Source.Outputs[Error output]"
+                  isErrorOut="true"
+                  name="Error output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Error output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Error output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Error output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Error output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Error output].Columns[No]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Error output].Columns[No]"
+                      name="No" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Error output].Columns[Description]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Error output].Columns[Description]"
+                      name="Description" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Error output].Columns[Gen_Prod_Posting_Group]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Error output].Columns[Gen_Prod_Posting_Group]"
+                      name="Gen_Prod_Posting_Group" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Error output].Columns[Item_Disc_Group]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Error output].Columns[Item_Disc_Group]"
+                      name="Item_Disc_Group" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Error output].Columns[Item_Tracking_Code]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Error output].Columns[Item_Tracking_Code]"
+                      name="Item_Tracking_Code" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Error output].Columns[Profit]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Error output].Columns[Profit]"
+                      name="Profit"
+                      precision="38"
+                      scale="4" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Error output].Columns[Scrap]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Error output].Columns[Scrap]"
+                      name="Scrap"
+                      precision="38"
+                      scale="4" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Error output].Columns[Sales_Unit_of_Measure]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Error output].Columns[Sales_Unit_of_Measure]"
+                      name="Sales_Unit_of_Measure" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Error output].Columns[Standard_Cost]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Error output].Columns[Standard_Cost]"
+                      name="Standard_Cost"
+                      precision="38"
+                      scale="4" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Error output].Columns[Unit_Cost]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Error output].Columns[Unit_Cost]"
+                      name="Unit_Cost"
+                      precision="38"
+                      scale="4" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Error output].Columns[Unit_Price]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Error output].Columns[Unit_Price]"
+                      name="Unit_Price"
+                      precision="38"
+                      scale="4" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Error output].Columns[Unit_Volume]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Error output].Columns[Unit_Volume]"
+                      name="Unit_Volume"
+                      precision="38"
+                      scale="4" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Error output].Columns[Vendor_No]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Error output].Columns[Vendor_No]"
+                      name="Vendor_No" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Error output].Columns[Purch_Unit_of_Measure]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Error output].Columns[Purch_Unit_of_Measure]"
+                      name="Purch_Unit_of_Measure" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Error output].Columns[COGS_LCY]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Error output].Columns[COGS_LCY]"
+                      name="COGS_LCY"
+                      precision="38"
+                      scale="4" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Error output].Columns[Inventory]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Error output].Columns[Inventory]"
+                      name="Inventory"
+                      precision="38"
+                      scale="4" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Error output].Columns[Net_Change]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Error output].Columns[Net_Change]"
+                      name="Net_Change"
+                      precision="38"
+                      scale="4" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Error output].Columns[Net_Invoiced_Qty]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Error output].Columns[Net_Invoiced_Qty]"
+                      name="Net_Invoiced_Qty"
+                      precision="38"
+                      scale="4" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Error output].Columns[Purchases_LCY]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Error output].Columns[Purchases_LCY]"
+                      name="Purchases_LCY"
+                      precision="38"
+                      scale="4" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Error output].Columns[Purchases_Qty]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Error output].Columns[Purchases_Qty]"
+                      name="Purchases_Qty"
+                      precision="38"
+                      scale="4" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Error output].Columns[Sales_LCY]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Error output].Columns[Sales_LCY]"
+                      name="Sales_LCY"
+                      precision="38"
+                      scale="4" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Error output].Columns[Sales_Qty]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Error output].Columns[Sales_Qty]"
+                      name="Sales_Qty"
+                      precision="38"
+                      scale="4" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Error output].Columns[VendorName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Error output].Columns[VendorName]"
+                      name="VendorName" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OData Source.Outputs[Error output].Columns[AuxiliaryIndex1]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Error output].Columns[AuxiliaryIndex1]"
+                      name="AuxiliaryIndex1" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\SQL Server Destination"
+              componentClassID="Microsoft.SQLServerDestination"
+              contactInfo="SQL Server Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;5"
+              description="SQL Server Destination"
+              name="SQL Server Destination"
+              version="5">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.String"
+                  description="The name of the database object to copy data into."
+                  expressionType="Notify"
+                  name="BulkInsertTableName">[SalesProfit]</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies that any constraints on the destination object are checked during the data copy operation. Corresponds to the bulk insert CHECK_CONSTRAINTS option."
+                  name="BulkInsertCheckConstraints">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of the first row to copy. Corresponds to the bulk insert FIRSTROW option."
+                  expressionType="Notify"
+                  name="BulkInsertFirstRow">-1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies that any insert triggers defined on the destination object will execute during the data copy. Corresponds to the bulk insert FIRE_TRIGGERS option."
+                  name="BulkInsertFireTriggers">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Corresponds to the bulk insert KEEPIDENTITY option."
+                  name="BulkInsertKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null copied to the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="BulkInsertKeepNulls">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of the last row to copy. Corresponds to the bulk insert LASTROW option."
+                  expressionType="Notify"
+                  name="BulkInsertLastRow">-1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of syntax errors and compilation errors that can occur before the data copy operation is canceled. Each row that cannot be copied is ignored and counted as one error. Corresponds to the bulk insert MAXERRORS option."
+                  name="BulkInsertMaxErrors">-1</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies how the data to be copied is sorted. Corresponds to the bulk insert ORDER option."
+                  expressionType="Notify"
+                  name="BulkInsertOrder"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies that a table-level lock is acquired for the duration of the data copy operation. Corresponds to the bulk insert TABLOCK option."
+                  name="BulkInsertTablock">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies in seconds the amount of time the SQL Destination adapter will wait before terminating if there is no data available for insertion.  A timeout value of 0 means the SQL Destination adapter will not time out."
+                  expressionType="Notify"
+                  name="Timeout">30</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion."
+                  name="MaxInsertCommitSize">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\SQL Server Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[BSD-MF-LT\MINADEV.D365]"
+                  connectionManagerRefId="Package.ConnectionManagers[BSD-MF-LT\MINADEV.D365]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input]"
+                  hasSideEffects="true"
+                  name="SQL Server Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].Columns[No]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="No"
+                      externalMetadataColumnId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[No]"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[No]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].Columns[Description]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Description"
+                      externalMetadataColumnId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Description]"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[Description]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].Columns[Gen_Prod_Posting_Group]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="Gen_Prod_Posting_Group"
+                      externalMetadataColumnId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Gen_Prod_Posting_Group]"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[Gen_Prod_Posting_Group]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].Columns[Item_Disc_Group]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="Item_Disc_Group"
+                      externalMetadataColumnId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Item_Disc_Group]"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[Item_Disc_Group]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].Columns[Item_Tracking_Code]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="Item_Tracking_Code"
+                      externalMetadataColumnId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Item_Tracking_Code]"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[Item_Tracking_Code]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].Columns[Profit]"
+                      cachedDataType="numeric"
+                      cachedName="Profit"
+                      cachedPrecision="38"
+                      cachedScale="4"
+                      externalMetadataColumnId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Profit]"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[Profit]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].Columns[Scrap]"
+                      cachedDataType="numeric"
+                      cachedName="Scrap"
+                      cachedPrecision="38"
+                      cachedScale="4"
+                      externalMetadataColumnId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Scrap]"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[Scrap]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].Columns[Sales_Unit_of_Measure]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="Sales_Unit_of_Measure"
+                      externalMetadataColumnId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Sales_Unit_of_Measure]"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[Sales_Unit_of_Measure]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].Columns[Standard_Cost]"
+                      cachedDataType="numeric"
+                      cachedName="Standard_Cost"
+                      cachedPrecision="38"
+                      cachedScale="4"
+                      externalMetadataColumnId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Standard_Cost]"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[Standard_Cost]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].Columns[Unit_Cost]"
+                      cachedDataType="numeric"
+                      cachedName="Unit_Cost"
+                      cachedPrecision="38"
+                      cachedScale="4"
+                      externalMetadataColumnId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Unit_Cost]"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[Unit_Cost]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].Columns[Unit_Price]"
+                      cachedDataType="numeric"
+                      cachedName="Unit_Price"
+                      cachedPrecision="38"
+                      cachedScale="4"
+                      externalMetadataColumnId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Unit_Price]"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[Unit_Price]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].Columns[Unit_Volume]"
+                      cachedDataType="numeric"
+                      cachedName="Unit_Volume"
+                      cachedPrecision="38"
+                      cachedScale="4"
+                      externalMetadataColumnId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Unit_Volume]"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[Unit_Volume]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].Columns[Vendor_No]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="Vendor_No"
+                      externalMetadataColumnId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Vendor_No]"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[Vendor_No]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].Columns[Purch_Unit_of_Measure]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="Purch_Unit_of_Measure"
+                      externalMetadataColumnId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Purch_Unit_of_Measure]"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[Purch_Unit_of_Measure]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].Columns[COGS_LCY]"
+                      cachedDataType="numeric"
+                      cachedName="COGS_LCY"
+                      cachedPrecision="38"
+                      cachedScale="4"
+                      externalMetadataColumnId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[COGS_LCY]"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[COGS_LCY]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].Columns[Inventory]"
+                      cachedDataType="numeric"
+                      cachedName="Inventory"
+                      cachedPrecision="38"
+                      cachedScale="4"
+                      externalMetadataColumnId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Inventory]"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[Inventory]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].Columns[Net_Change]"
+                      cachedDataType="numeric"
+                      cachedName="Net_Change"
+                      cachedPrecision="38"
+                      cachedScale="4"
+                      externalMetadataColumnId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Net_Change]"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[Net_Change]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].Columns[Net_Invoiced_Qty]"
+                      cachedDataType="numeric"
+                      cachedName="Net_Invoiced_Qty"
+                      cachedPrecision="38"
+                      cachedScale="4"
+                      externalMetadataColumnId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Net_Invoiced_Qty]"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[Net_Invoiced_Qty]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].Columns[Purchases_LCY]"
+                      cachedDataType="numeric"
+                      cachedName="Purchases_LCY"
+                      cachedPrecision="38"
+                      cachedScale="4"
+                      externalMetadataColumnId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Purchases_LCY]"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[Purchases_LCY]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].Columns[Purchases_Qty]"
+                      cachedDataType="numeric"
+                      cachedName="Purchases_Qty"
+                      cachedPrecision="38"
+                      cachedScale="4"
+                      externalMetadataColumnId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Purchases_Qty]"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[Purchases_Qty]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].Columns[Sales_LCY]"
+                      cachedDataType="numeric"
+                      cachedName="Sales_LCY"
+                      cachedPrecision="38"
+                      cachedScale="4"
+                      externalMetadataColumnId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Sales_LCY]"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[Sales_LCY]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].Columns[Sales_Qty]"
+                      cachedDataType="numeric"
+                      cachedName="Sales_Qty"
+                      cachedPrecision="38"
+                      cachedScale="4"
+                      externalMetadataColumnId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Sales_Qty]"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[Sales_Qty]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].Columns[VendorName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="VendorName"
+                      externalMetadataColumnId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[VendorName]"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[VendorName]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].Columns[AuxiliaryIndex1]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="AuxiliaryIndex1"
+                      externalMetadataColumnId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[AuxiliaryIndex1]"
+                      lineageId="Package\Data Flow Task\OData Source.Outputs[Output].Columns[AuxiliaryIndex1]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[No]"
+                      dataType="wstr"
+                      length="20"
+                      name="No" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Description]"
+                      dataType="wstr"
+                      length="50"
+                      name="Description" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Gen_Prod_Posting_Group]"
+                      dataType="wstr"
+                      length="20"
+                      name="Gen_Prod_Posting_Group" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Item_Disc_Group]"
+                      dataType="wstr"
+                      length="20"
+                      name="Item_Disc_Group" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Item_Tracking_Code]"
+                      dataType="wstr"
+                      length="10"
+                      name="Item_Tracking_Code" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Profit]"
+                      dataType="numeric"
+                      name="Profit"
+                      precision="38"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Scrap]"
+                      dataType="numeric"
+                      name="Scrap"
+                      precision="38"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Sales_Unit_of_Measure]"
+                      dataType="wstr"
+                      length="10"
+                      name="Sales_Unit_of_Measure" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Standard_Cost]"
+                      dataType="numeric"
+                      name="Standard_Cost"
+                      precision="38"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Unit_Cost]"
+                      dataType="numeric"
+                      name="Unit_Cost"
+                      precision="38"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Unit_Price]"
+                      dataType="numeric"
+                      name="Unit_Price"
+                      precision="38"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Unit_Volume]"
+                      dataType="numeric"
+                      name="Unit_Volume"
+                      precision="38"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Vendor_No]"
+                      dataType="wstr"
+                      length="20"
+                      name="Vendor_No" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Purch_Unit_of_Measure]"
+                      dataType="wstr"
+                      length="10"
+                      name="Purch_Unit_of_Measure" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[COGS_LCY]"
+                      dataType="numeric"
+                      name="COGS_LCY"
+                      precision="38"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Inventory]"
+                      dataType="numeric"
+                      name="Inventory"
+                      precision="38"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Net_Change]"
+                      dataType="numeric"
+                      name="Net_Change"
+                      precision="38"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Net_Invoiced_Qty]"
+                      dataType="numeric"
+                      name="Net_Invoiced_Qty"
+                      precision="38"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Purchases_LCY]"
+                      dataType="numeric"
+                      name="Purchases_LCY"
+                      precision="38"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Purchases_Qty]"
+                      dataType="numeric"
+                      name="Purchases_Qty"
+                      precision="38"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Sales_LCY]"
+                      dataType="numeric"
+                      name="Sales_LCY"
+                      precision="38"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Sales_Qty]"
+                      dataType="numeric"
+                      name="Sales_Qty"
+                      precision="38"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[VendorName]"
+                      dataType="wstr"
+                      length="50"
+                      name="VendorName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[AuxiliaryIndex1]"
+                      dataType="wstr"
+                      length="20"
+                      name="AuxiliaryIndex1" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task.Paths[Output]"
+              endId="Package\Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input]"
+              name="Output"
+              startId="Package\Data Flow Task\OData Source.Outputs[Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="149.760000000001,41.472"
+          Id="Package\Data Flow Task"
+          TopLeft="94.9171443799078,98.8797660154983" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="142.848,41.472"
+          Id="Package\Data Flow Task\OData Source"
+          TopLeft="101.50000163487,78.324471609571" />
+        <NodeLayout
+          Size="185.856000000001,41.472"
+          Id="Package\Data Flow Task\SQL Server Destination"
+          TopLeft="105.325716079401,207.902120562808" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Output]"
+          TopLeft="172.92400163487,119.796471609571">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="25.3297144445303,88.1056489532365"
+              Start="0,0"
+              End="25.3297144445303,80.6056489532365">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.0528244766183" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,40.0528244766183"
+                    Point2="0,44.0528244766183"
+                    Point3="4,44.0528244766183" />
+                  <mssgle:LineSegment
+                    End="21.3297144445303,44.0528244766183" />
+                  <mssgle:CubicBezierSegment
+                    Point1="21.3297144445303,44.0528244766183"
+                    Point2="25.3297144445303,44.0528244766183"
+                    Point3="25.3297144445303,48.0528244766183" />
+                  <mssgle:LineSegment
+                    End="25.3297144445303,80.6056489532365" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\SQL Server Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
