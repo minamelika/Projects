@@ -1,0 +1,23 @@
+<html>
+<head>
+    <script type="text/javascript">
+    var flNo, monthCost;
+        flNo = parseInt(prompt("Kindly enter the floor number"));
+        if (flNo == 0 || flNo==1)
+        monthCost = 7000;
+        else if (flNo>1 && flNo<=5)
+        monthCost = 5150;
+        else if (flNo>=6 && flNo<=10)
+        monthCost = 3570;
+        else
+            {
+            monthCost = 0;
+            alert("out of range");
+            }
+        alert("Monthly cost is : "+ monthCost);
+    </script>
+    </head>
+    <body>
+    
+    </body>
+</html>
