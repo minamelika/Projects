@@ -1,0 +1,11 @@
+C:\Users\m-farag\Projects\Csharp\IncreasingSequance\IncreasingSequance\bin\Debug\netcoreapp2.1\IncreasingSequance.deps.json
+C:\Users\m-farag\Projects\Csharp\IncreasingSequance\IncreasingSequance\bin\Debug\netcoreapp2.1\IncreasingSequance.runtimeconfig.json
+C:\Users\m-farag\Projects\Csharp\IncreasingSequance\IncreasingSequance\bin\Debug\netcoreapp2.1\IncreasingSequance.runtimeconfig.dev.json
+C:\Users\m-farag\Projects\Csharp\IncreasingSequance\IncreasingSequance\bin\Debug\netcoreapp2.1\IncreasingSequance.dll
+C:\Users\m-farag\Projects\Csharp\IncreasingSequance\IncreasingSequance\bin\Debug\netcoreapp2.1\IncreasingSequance.pdb
+C:\Users\m-farag\Projects\Csharp\IncreasingSequance\IncreasingSequance\obj\Debug\netcoreapp2.1\IncreasingSequance.csprojResolveAssemblyReference.cache
+C:\Users\m-farag\Projects\Csharp\IncreasingSequance\IncreasingSequance\obj\Debug\netcoreapp2.1\IncreasingSequance.csproj.CoreCompileInputs.cache
+C:\Users\m-farag\Projects\Csharp\IncreasingSequance\IncreasingSequance\obj\Debug\netcoreapp2.1\IncreasingSequance.AssemblyInfoInputs.cache
+C:\Users\m-farag\Projects\Csharp\IncreasingSequance\IncreasingSequance\obj\Debug\netcoreapp2.1\IncreasingSequance.AssemblyInfo.cs
+C:\Users\m-farag\Projects\Csharp\IncreasingSequance\IncreasingSequance\obj\Debug\netcoreapp2.1\IncreasingSequance.dll
+C:\Users\m-farag\Projects\Csharp\IncreasingSequance\IncreasingSequance\obj\Debug\netcoreapp2.1\IncreasingSequance.pdb
